@@ -49,6 +49,7 @@ fun AnimalDetailsScreen(
   modifier: Modifier = Modifier,
   animal: Animal?,
   onBackClick: () -> Unit,
+  onEditClick: (Animal) -> Unit,
 ) {
   Scaffold(
     modifier = modifier,
@@ -77,14 +78,19 @@ fun AnimalDetailsScreen(
       ) {
         ExtendedFloatingActionButton(
           onClick = {
-            //TODO: à compléter
+            animal?.let {
+              onEditClick(it)
+            }
+
           },
           icon = { Icon(Icons.Filled.Edit, stringResource(id = R.string.description_button_edit)) },
           text = { Text(text = stringResource(id = R.string.description_button_edit)) },
         )
         ExtendedFloatingActionButton(
           onClick = {
-            //TODO: à compléter
+
+              animal?.delete()
+              onBackClick()
           },
           contentColor = Color.White,
           containerColor = Color.Red,
@@ -111,6 +117,9 @@ fun AnimalDetailsScreen(
     }
   }
 }
+
+
+
 
 @Composable
 private fun AnimalDetails(

@@ -57,15 +57,13 @@ fun CreateAnimalScreen(
   val context = LocalContext.current
   val scope = rememberCoroutineScope()
   val snackbarHostState = remember { SnackbarHostState() }
+  val name = rememberSaveable { mutableStateOf(animal?.name ?: "") }
+  val breed = rememberSaveable { mutableStateOf(animal?.breed ?: Breed.entries[0]) }
+  val age = rememberSaveable { mutableStateOf(animal?.age?.toString() ?: "") }
+  val weight = rememberSaveable { mutableStateOf(animal?.weight?.toString() ?: "") }
+  val height = rememberSaveable { mutableStateOf(animal?.height?.toString() ?: "") }
 
-  //TODO: à compléter
-  val name = rememberSaveable { mutableStateOf("") }
-  val breed = rememberSaveable { mutableStateOf(Breed.entries[0]) }
-  val age = rememberSaveable { mutableStateOf("") }
-  val weight = rememberSaveable { mutableStateOf("") }
-  val height = rememberSaveable { mutableStateOf("") }
-
-  Scaffold(
+    Scaffold(
     modifier = modifier,
     topBar = {
       TopAppBar(
@@ -102,19 +100,21 @@ fun CreateAnimalScreen(
       }
     }
   ) { contentPadding ->
-    CreateAnimal(
-      modifier = Modifier.padding(contentPadding),
-      name = name.value,
-      onNameChanged = { name.value = it },
-      breed = breed.value,
-      onBreedChanged = { breed.value = it },
-      age = age.value,
-      onAgeChanged = { age.value = it },
-      weight = weight.value,
-      onWeightChanged = { weight.value = it },
-      height = height.value,
-      onHeightChanged = { height.value = it }
-    )
+
+      CreateAnimal(
+          modifier = Modifier.padding(contentPadding),
+          name = name.value,
+          onNameChanged = { name.value = it },
+          breed = breed.value,
+          onBreedChanged = { breed.value = it },
+          age = age.value,
+          onAgeChanged = { age.value = it },
+          weight = weight.value,
+          onWeightChanged = { weight.value = it },
+          height = height.value,
+          onHeightChanged = { height.value = it }
+      )
+
   }
 }
 

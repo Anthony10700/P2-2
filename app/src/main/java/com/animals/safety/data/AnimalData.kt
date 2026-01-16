@@ -14,8 +14,8 @@ object AnimalData {
   
   val animals = mutableListOf(milou, rantanplan, garfield, marguerite)
 
-  fun findAnimalById(animalId: String) : Animal? =
-    animals.firstOrNull { it.id.toString() == animalId }
+  fun findAnimalById(animalId: String) : Animal? = animals.firstOrNull { it.id.toString() == animalId }
+    fun deleteAnimal(animal: Animal) = animals.remove(animal)
 
 }
 
