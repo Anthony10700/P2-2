@@ -10,10 +10,5 @@ data class Animal(
   val age: Int,
   val weight: Float,
   val height: Float
-) : Serializable {
-    fun delete() {
-        AnimalData.deleteAnimal(this)
-    }
-
-}
+) : Serializable
 
